@@ -421,22 +421,221 @@
       .about-img img { width: 220px; height: 220px; }
       section h2 { font-size: 28px; }
     }
+    /* Tambahan Responsivitas */
+@media (max-width: 992px) {
+  header {
+    padding: 18px 6%;
+  }
+
+  nav a {
+    margin-left: 20px;
+    font-size: 15px;
+  }
+
+  .hero {
+    padding: 0 6%;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 20px;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 6%;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  nav a {
+    margin: 0;
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .hero {
+    align-items: center;
+    text-align: center;
+    padding: 0 5%;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .hero p {
+    font-size: 17px;
+    max-width: 100%;
+  }
+
+  #about {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .about-img img {
+    width: 200px;
+    height: 200px;
+  }
+
+  section h2 {
+    font-size: 26px;
+    text-align: center;
+    border: none;
+    padding: 0;
+  }
+
+  section p {
+    font-size: 15px;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .skills-grid,
+  .projects {
+    grid-template-columns: 1fr;
+  }
+
+  .contact {
+    padding: 90px 6%;
+  }
+
+  .contact-info p {
+    font-size: 16px;
+    word-wrap: break-word;
+  }
+
+  .social a {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 12px 5%;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  nav a {
+    font-size: 13px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .about-img img {
+    width: 160px;
+    height: 160px;
+  }
+
+  section {
+    padding: 80px 5%;
+  }
+
+  footer {
+    font-size: 13px;
+    padding: 15px;
+  }
+}
+/* === HAMBURGER MENU RESPONSIVE === */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu-toggle:hover {
+  color: #00d4ff;
+}
+
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: rgba(18, 18, 18, 0.98);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 10px 0;
+    position: absolute;
+    top: 70px;
+    left: 0;
+  }
+
+  nav a {
+    margin: 12px 0;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  nav.show {
+    display: flex;
+    animation: dropdownFade 0.3s ease;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  header {
+    flex-wrap: wrap;
+  }
+}
+
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
   </style>
-</head>
-<body>
-  <a href="#main-content" class="skip-link">Langsung ke konten utama</a>
-  
-  <header role="banner">
-    <div class="logo">PORTFOLIO</div>
-    <nav role="navigation" aria-label="Menu navigasi utama">
-      <a href="#home" aria-current="page">Beranda</a>
-      <a href="#about">Tentang</a>
-      <a href="#education">Pendidikan</a>
-      <a href="#skills">Kemampuan</a>
-      <a href="#projects">Proyek</a>
-      <a href="#contact">Kontak</a>
-    </nav>
-  </header>
+<header role="banner">
+  <div class="logo">PORTFOLIO</div>
+  <button class="menu-toggle" aria-label="Toggle menu">
+    <i class="fas fa-bars"></i>
+  </button>
+  <nav role="navigation" aria-label="Menu navigasi utama">
+    <a href="#home" aria-current="page">Beranda</a>
+    <a href="#about">Tentang</a>
+    <a href="#education">Pendidikan</a>
+    <a href="#skills">Kemampuan</a>
+    <a href="#projects">Proyek</a>
+    <a href="#contact">Kontak</a>
+  </nav>
+</header>
+
 
   <main id="main-content">
     <section id="home" class="hero" aria-labelledby="hero-title">
@@ -552,50 +751,116 @@
   </main>
 
   <footer role="contentinfo">
-    <p>© 2025 Ihsan Nurfalah — Dibuat dengan <i class="fas fa-heart" style="color: #e74c3c;"></i></p>
+    <p>© 2025 Ihsan Nurfalah — Dibuat dengan </i></p>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
-    
-    // Active navigation highlighting
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a');
-    
-    window.addEventListener('scroll', () => {
-      let current = '';
-      
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (pageYOffset >= sectionTop - 100) {
-          current = section.getAttribute('id');
-        }
-      });
-      
-      navLinks.forEach(link => {
-        link.removeAttribute('aria-current');
-        if (link.getAttribute('href').slice(1) === current) {
-          link.setAttribute('aria-current', 'page');
-        }
-      });
-    });
-  </script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+
+  // Highlight link aktif saat scroll
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
   
-  <style>
-    .sr-only {
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= sectionTop - 100) {
+        current = section.getAttribute('id');
+      }
+    });
+    
+    navLinks.forEach(link => {
+      link.removeAttribute('aria-current');
+      if (link.getAttribute('href').slice(1) === current) {
+        link.setAttribute('aria-current', 'page');
+      }
+    });
+  });
+
+  // Toggle dropdown menu di mobile
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+    const icon = menuToggle.querySelector('i');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-times');
+  });
+
+  // Tutup menu saat klik link (hanya di mobile)
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        nav.classList.remove('show');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+      }
+    });
+  });
+</script>
+
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Tambahkan style menu toggle (ikon hamburger) */
+  .menu-toggle {
+    display: none;
+    font-size: 26px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background: rgba(18, 18, 18, 0.95);
       position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
+      top: 70px;
+      left: 0;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
     }
+
+    nav.show {
+      display: flex;
+      animation: fadeInDown 0.4s ease;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      margin: 12px 0;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+</style>
+
   </style>
 </body>
 </html>
